@@ -1,10 +1,10 @@
 module "vpc" {
-    source = "./modules/vpc"
-    vpc_cidr = var.vpc_cidr
-    
+  source   = "./modules/vpc"
+  vpc_cidr = var.vpc_cidr
+
 }
 module "subnets" {
-  source  = "./modules/Subnets"
+  source = "./modules/Subnets"
 
   vpc_id  = module.vpc.vpc_id
   subnets = var.subnets
@@ -16,7 +16,7 @@ module "igw" {
 }
 
 module "nat_gateway" {
-  source            = "./modules/NatGateway"
+  source           = "./modules/NatGateway"
   public_subnet_id = module.subnets.public_subnets[0]
 }
 
@@ -27,6 +27,6 @@ module "routing" {
   internet_gateway_id = module.igw.id
   nat_gateway_id      = module.nat_gateway.id
 
-  public_subnet_ids   = module.subnets.public_subnets
-  private_subnet_ids  = module.subnets.private_subnets
+  public_subnet_ids  = module.subnets.public_subnets
+  private_subnet_ids = module.subnets.private_subnets
 }
