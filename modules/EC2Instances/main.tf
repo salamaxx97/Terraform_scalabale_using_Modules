@@ -19,6 +19,7 @@ resource "aws_instance" "private" {
   ami           = var.ami
   instance_type = var.instance_type
   subnet_id     = element(var.private_subnet_ids, count.index)
+  key_name      = var.key_name
 
   security_groups = [var.security_group_ids["private"]]
 
