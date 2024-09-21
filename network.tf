@@ -18,6 +18,7 @@ module "igw" {
 module "nat_gateway" {
   source           = "./modules/NatGateway"
   public_subnet_id = module.subnets.public_subnets[0]
+  Name = "MyNatGatewaY"
 }
 
 
