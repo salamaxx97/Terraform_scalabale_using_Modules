@@ -20,22 +20,27 @@ variable "subnets" {
   description = "Map of subnets with CIDR blocks, availability zones, and public IP assignment settings"
 }
 
+variable "ami" {
+  type = string
+}
 
-# variable "security_groups" {
-#   type = map(any)
-# }
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+}
 
-# variable "availability_zones" {
-#   type = list(any)
-# }
+variable "user_data" {
+  description = "script to install application"
+  type        = string
+  default     = <<-EOF
+              #!/bin/bash
+              apt-get update -y
+              apt-get install -y nginx
+              systemctl start nginx
+              systemctl enable nginx
+              EOF
+}
 
-# variable "instances" {
-#   type = map(any)
-# }
-
-# variable "ami" {
-#   type = string
-# }
-# variable "instance_type" {
-#   type = string
-# }
+variable "keypair" {
+  type = string
+}
