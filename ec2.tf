@@ -6,17 +6,17 @@ module "security_group" {
 
 module "ssh_key" {
   source   = "./modules/KeyPair"
-  key_name = "myapp-keypair"
+  key_name = var.keypair
 }
 
 
 module "ec2_instances" {
-  depends_on = [module.nat_gateway]
+  depends_on             = [module.nat_gateway, module.routing]
   source                 = "./modules/EC2Instances"
-  name                   = "Nginx"
+  name                   = "my-app"
   ami                    = var.ami
   instance_type          = var.instance_type
-  user_data = var.user_data
+  user_data              = var.user_data
   bastion_instance_count = 1
   private_instance_count = 2
   public_subnet_ids      = module.subnets.public_subnets
