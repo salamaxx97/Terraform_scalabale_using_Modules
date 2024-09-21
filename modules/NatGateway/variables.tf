@@ -4,4 +4,5 @@ variable "public_subnet_id" {
 
 variable "Name" {
   type = string
+  default = "MyNatGateway"
 }
