@@ -9,6 +9,13 @@ resource "aws_security_group" "load_balancer_sg" {
     cidr_blocks = ["0.0.0.0/0"] # Allow HTTP from anywhere
   }
 
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # Allow all outbound traffic
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = {
     Name = "${var.name}-lb-sg"
   }
@@ -33,9 +40,11 @@ resource "aws_security_group" "private_instance_sg" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1" # Allow all outbound traffic
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # Allow all outbound traffic
+    cidr_blocks = ["0.0.0.0/0"]
+
   }
 
   tags = {
@@ -55,9 +64,10 @@ resource "aws_security_group" "bastion_sg" {
   }
 
   egress {
-    from_port = 0
-    to_port   = 0
-    protocol  = "-1" # Allow all outbound traffic
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # Allow all outbound traffic
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
