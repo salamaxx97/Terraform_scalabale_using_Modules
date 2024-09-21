@@ -23,7 +23,7 @@ This project sets up a scalable infrastructure on AWS using Terraform, consistin
 2. Navigate to the project directory:
 
     ```bash
-    Terraform_scalabale_using_Modules
+    cd Terraform_scalabale_using_Modules
     ```
 3. Update `terraform.tfvars` with your desired configuration values.
 4. Initialize Terraform:
