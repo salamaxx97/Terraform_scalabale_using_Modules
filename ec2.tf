@@ -11,10 +11,12 @@ module "ssh_key" {
 
 
 module "ec2_instances" {
+  depends_on = [module.nat_gateway]
   source                 = "./modules/EC2Instances"
-  name                   = "myapp"
+  name                   = "Nginx"
   ami                    = var.ami
   instance_type          = var.instance_type
+  user_data = var.user_data
   bastion_instance_count = 1
   private_instance_count = 2
   public_subnet_ids      = module.subnets.public_subnets
