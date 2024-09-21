@@ -48,11 +48,5 @@ variable "security_group_ids" {
 variable "user_data" {
   description = "script to install application"
   type        = string
-  default     = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y nginx
-              systemctl start nginx
-              systemctl enable nginx
-              EOF
+  default     = ""
 }
