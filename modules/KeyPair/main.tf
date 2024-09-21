@@ -10,10 +10,20 @@ resource "aws_key_pair" "kp" {
 
   # excute this command localy and save KeyPair to .ssh 
   provisioner "local-exec" {
+    when    = create
     command = <<EOT
-    echo '${tls_private_key.pk.private_key_pem}' > ~/.ssh/${var.key_name}.pem
-    chmod 400 ~/.ssh/${var.key_name}.pem
-  EOT
+      echo '${tls_private_key.pk.private_key_pem}' > ~/.ssh/${var.key_name}.pem
+      chmod 400 ~/.ssh/${var.key_name}.pem
+    EOT
+  }
+
+  provisioner "local-exec" {
+    when    = destroy
+    command = <<EOT
+      if [ -f ~/.ssh/${self.key_name}.pem ]; then
+        rm -f ~/.ssh/${self.key_name}.pem
+      fi
+    EOT
   }
 
 }
