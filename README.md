@@ -4,7 +4,7 @@
 
 This project sets up a scalable infrastructure on AWS using Terraform, consisting of a VPC, subnets, EC2 instances, security groups, a load balancer, an Internet Gateway, and a NAT Gateway.
 ## Desired Infrastructure 
-![Architecture Diagram](diagram.jpeg)
+![Architecture Diagram](/screenshots/diagram.jpeg)
 
 ## Getting Started
 
@@ -197,5 +197,18 @@ The `output.tf` file defines outputs such as the load balancer DNS name, instanc
 
 ## Conclusion
 The modular structure and use of variables and outputs in this Terraform project provide flexibility and reusability, enabling easy customization and management of AWS resources.
+
+## ScreenShots
+![Screenshot 1](screenshots/output.png)
+![Screenshot 2](screenshots/dns1.png)
+![Screenshot 3](screenshots/dns2.png)
+![Screenshot 4](screenshots/vpc.png)
+![Screenshot 5](screenshots/sg.png)
+![Screenshot 6](screenshots/instances.png)
+![Screenshot 7](screenshots/lb.png)
+![Screenshot 8](screenshots/tg.png)
+![Screenshot 9](screenshots/keypair.png)
+
+
 
 
